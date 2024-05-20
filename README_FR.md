@@ -1,6 +1,6 @@
 # 🧰 MyIP - Une meilleure boîte à outils IP
 
-![IPCheck.ing Banner](https://raw.githubusercontent.com/jason5ng32/MyIP/main/public/gh_banner.png)
+![IPCheck.ing Banner](https://raw.githubusercontent.com/jason5ng32/MyIP/main/public/github/gh_banner.png)
 
 ![GitHub Repo stars](https://img.shields.io/github/stars/jason5ng32/MyIP)
 ![GitHub forks](https://img.shields.io/github/forks/jason5ng32/myip)
@@ -23,8 +23,7 @@
 
 Notes: Vous pouvez utiliser ma démo gratuitement et vous pouvez également la déployer vous-même.
 
-[![Deploy with Vercel](https://raw.githubusercontent.com/jason5ng32/MyIP/main/public/Vercel.svg)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fjason5ng32%2FMyIP&project-name=MyIP&repository-name=MyIP)
-[![Deploy with Docker](https://raw.githubusercontent.com/jason5ng32/MyIP/main/public/Docker.svg)](https://hub.docker.com/r/jason5ng32/myip)
+[![Deploy with Docker](https://raw.githubusercontent.com/jason5ng32/MyIP/main/public/github/Docker.svg)](https://hub.docker.com/r/jason5ng32/myip)
 
 ## 👀 Principales fonctionnalités
 
@@ -50,8 +49,6 @@ Notes: Vous pouvez utiliser ma démo gratuitement et vous pouvez également la d
 
 ## 📕 Comment utiliser
 
-Il existe 3 façons de déployer :
-
 ### Déploiement dans un environnement Node
 
 Assurez-vous d'avoir Node.js installé.
@@ -62,16 +59,10 @@ Clonez le code :
 git clone https://github.com/jason5ng32/MyIP.git
 ```
 
-Installer:
+Installer & Construire :
 
 ```bash
-npm install
-```
-
-Construire:
-
-```bash
-npm run build
+npm install && npm run build
 ```
 
 Exécuter:
@@ -81,10 +72,6 @@ npm start
 ```
 
 Le programme s'exécutera sur le port 18966.
-
-### Using Vercel
-
-Cliquez sur le bouton 'Déployer sur Vercel' en haut pour terminer le déploiement. Veuillez noter que certaines fonctionnalités ne sont pas disponibles sur Vercel (voir la section des variables d'environnement pour plus de détails).
 
 ### Using Docker
 
@@ -109,14 +96,9 @@ Vous pouvez utiliser le programme sans ajouter de variables d'environnement, mai
 | `ALLOWED_DOMAINS` | Non | `""` | Domaines autorisés pour l'accès, séparés par des virgules, utilisés pour empêcher une utilisation abusive de l'API backend |
 | `IPCHECKING_API_KEY` | Non | `""` | Clé API pour IPCheck.ing, utilisée pour obtenir des informations de géolocalisation précises sur l'adresse IP |
 | `IPINFO_API_TOKEN` | Non | `""` | Jeton API pour IPInfo.io, utilisé pour obtenir des informations de géolocalisation sur l'adresse IP via IPInfo.io |
+| `IPAPIIS_API_KEY` | Non | `""` | Clé API pour IPAPI.is, utilisée pour obtenir des informations de géolocalisation sur l'adresse IP via IPAPI.is |
 | `KEYCDN_USER_AGENT` | Non | `""` | Le nom de domaine lorsque vous utilisez KeyCDN, doit contenir le préfixe https. Utilisé pour obtenir des informations sur l'adresse IP via KeyCDN |
 | `CLOUDFLARE_API` | Non | `""` | Clé API pour Cloudflare, utilisée pour obtenir des informations sur le système AS via Cloudflare |
-| `VITE_RECAPTCHA_SITE_KEY` | Non | `""` | Clé de site reCAPTCHA de Google, utilisée pour afficher la vérification reCAPTCHA sur le frontend |
-| `RECAPTCHA_SECRET_KEY` | Non | `""` | Clé secrète reCAPTCHA de Google, utilisée pour vérifier la vérification reCAPTCHA sur le backend |
-
-> [!TIP]
-> Les variables d'environnement commençant par `SECURITY_` ne sont valides que lors du déploiement à l'aide de npm ou de Docker.
->
 
 ### Utilisation des variables d'environnement dans un environnement Node
 
@@ -137,10 +119,6 @@ IPCHECKING_API="YOUR_KEY_HERE"
 ```
 
 Ensuite, redémarrez le service backend.
-
-### Utilisation des variables d'environnement dans Vercel
-
-Veuillez vous référer au contenu de `.env.example` et ajoutez-le aux variables d'environnement dans Vercel.
 
 ### Utilisation des variables d'environnement dans Docker
 
