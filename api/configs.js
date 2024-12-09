@@ -14,10 +14,10 @@ export default (req, res) => {
     }
 
     const hostname = referer ? new URL(referer).hostname : '';
-    const originalSite = hostname === 'ipcheck.ing' || hostname === 'www.ipcheck.ing';
+    const originalSite = hostname === 'ipcheck.ing' || hostname === 'www.ipcheck.ing' || hostname === 'localtest.ipcheck.ing';
 
     const envConfigs = {
-        bingMap: process.env.BING_MAP_API_KEY,
+        map: process.env.GOOGLE_MAP_API_KEY,
         ipInfo: process.env.IPINFO_API_TOKEN,
         ipChecking: process.env.IPCHECKING_API_KEY,
         keyCDN: process.env.KEYCDN_USER_AGENT,

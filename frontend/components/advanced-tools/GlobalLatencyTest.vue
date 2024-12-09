@@ -1,10 +1,6 @@
 <template>
   <!-- Ping Test -->
-  <div class="ping-test-section mb-4">
-    <div class="jn-title2">
-      <h2 id="PingTest" :class="{ 'mobile-h2': isMobile }">⏱️ {{ t('pingtest.Title') }}</h2>
-
-    </div>
+  <div class="ping-test-section my-4">
     <div class="text-secondary">
       <p>{{ t('pingtest.Note') }}</p>
       <p v-if="!isMobile">{{ t('pingtest.Note2') }}</p>
@@ -105,8 +101,8 @@ const isDarkMode = computed(() => store.isDarkMode);
 const isMobile = computed(() => store.isMobile);
 const lang = computed(() => store.lang);
 let allIPs = computed(() => {
-  const _allIPs = store.Global_ipDataCards;
-  return _allIPs.filter(ip => ip && !ip.includes(' ') && !ip.includes(':'));
+  const _allIPs = store.allIPs;
+  return _allIPs.filter(ip => ip && !ip.includes(' '));
 });
 
 const selectedIP = ref('');
@@ -118,6 +114,7 @@ const startPingCheck = () => {
   trackEvent('Section', 'StartClick', 'GlobalLatency');
   // 清空上一次结果
   pingResults.value = [];
+  cleanMap();
   let tryCount = 0;
   // 子函数：发起 ping 请求
   const sendPingRequest = async () => {
@@ -279,6 +276,11 @@ const drawMap = () => {
     initialZoom: 1,
   });
 }
+
+// 清除地图数据
+const cleanMap = () => { 
+  document.getElementById('svgMap').innerHTML = '';
+};
 
 </script>
 

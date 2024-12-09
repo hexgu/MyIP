@@ -5,6 +5,7 @@ export const useMainStore = defineStore('main', {
 
   state: () => ({
     lang: 'en',
+    currentPath: {},
     mountingStatus: {
       ipcheck: false,
       connectivity: false,
@@ -12,6 +13,11 @@ export const useMainStore = defineStore('main', {
       dnsleaktest: false,
       speedtest: false,
       advancedtools: false,
+    },
+    shell: {
+      ipv4Domain: import.meta.env.VITE_CURL_IPV4_DOMAIN,
+      ipv6Domain: import.meta.env.VITE_CURL_IPV6_DOMAIN,
+      ipv64Domain: import.meta.env.VITE_CURL_IPV64_DOMAIN,
     },
     loadingStatus: {
       ipcheck: false,
@@ -22,7 +28,7 @@ export const useMainStore = defineStore('main', {
     isDarkMode: false,
     isMobile: false,
     shouldRefreshEveryThing: false,
-    Global_ipDataCards: [],
+    allIPs: [],
     configs: {},
     userPreferences: {},
     alert: {
@@ -39,6 +45,7 @@ export const useMainStore = defineStore('main', {
       { id: 4, text: 'KeyCDN', url: '/api/keycdn?ip={{ip}}', enabled: true },
       { id: 5, text: 'IP.SB', url: '/api/ipsb?ip={{ip}}', enabled: true },
       { id: 6, text: 'IPAPI.is', url: '/api/ipapiis?ip={{ip}}', enabled: true },
+      { id: 7, text: 'MaxMind', url: '/api/maxmind?ip={{ip}}&lang={{lang}}', enabled: true },
     ],
   }),
 
@@ -47,9 +54,16 @@ export const useMainStore = defineStore('main', {
     allHasLoaded: (state) => {
       return Object.values(state.loadingStatus).every(status => status);
     },
+    curlDomainsHadSet: (state) => {
+      return state.shell.ipv4Domain && state.shell.ipv6Domain && state.shell.ipv64Domain;
+    }
   },
 
   actions: {
+    // 设置当前 route 路径
+    setCurrentPath(path, id) {
+      this.currentPath = { path: path, id: id };
+    },
     // 获取数据库的URL
     getDbUrl(id, ip, lang) {
       const db = this.ipDBs.find(d => d.id === id);
@@ -69,9 +83,9 @@ export const useMainStore = defineStore('main', {
       this.alert = { alertToShow, alertStyle, alertMessage, alertTitle };
     },
     // 从不同的组件收集合并 IP 数据
-    updateGlobalIpDataCards(payload) {
-      const uniqueIPs = new Set([...this.Global_ipDataCards, ...payload]);
-      this.Global_ipDataCards = Array.from(uniqueIPs);
+    updateAllIPs(payload) {
+      const uniqueIPs = new Set([...this.allIPs, ...payload]);
+      this.allIPs = Array.from(uniqueIPs);
     },
     // 设置移动模式
     setIsMobile(payload) {
@@ -114,6 +128,7 @@ export const useMainStore = defineStore('main', {
         popupConnectivityNotifications: true,
         ipCardsToShow: 6,
         ipGeoSource: 0,
+        lang: 'auto',
       };
       const storedPreferences = localStorage.getItem('userPreferences');
       let preferencesToStore;

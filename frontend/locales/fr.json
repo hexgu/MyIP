@@ -15,7 +15,7 @@
             "title": "Préférences",
             "preferenceTips": "Ces paramètres sont enregistrés dans votre navigateur pour une utilisation ultérieure. Certains paramètres nécessitent un rafraîchissement de la page pour prendre effet.",
             "colorScheme": "Schéma de Couleurs",
-            "colorAuto": "Par Défaut Système",
+            "systemAuto": "Système",
             "colorLight": "Jour",
             "colorDark": "Nuit",
             "ipSourcesToCheck": "Serveurs pour vérifier les adresses IP",
@@ -32,8 +32,65 @@
             "popupConnectivityNotifications": "Alertes de Connectivité Pop-up",
             "popupConnectivityNotificationsTips": "Activé, les résultats de la première vérification sont affichés sous forme d'alerte pop-up.",
             "ipDB": "Base de données de géolocalisation IP",
-            "ipDBTips": "Vous pouvez sélectionner la source de données de géolocalisation IP par défaut. Si la source sélectionnée n'est pas disponible, le système utilisera les sources suivantes."
+            "ipDBTips": "Vous pouvez sélectionner la source de données de géolocalisation IP par défaut. Si la source sélectionnée n'est pas disponible, le système utilisera les sources suivantes.",
+            "language": "Paramètres de langue",
+            "languageTips": "Rafraîchissement du navigateur pour prendre effet."
         }
+    },
+    "shell": {
+        "Title": "API de ligne de commande",
+        "Note1": "Eh bien, il s'avère que toi aussi tu aimes utiliser le terminal ?",
+        "Note2_1": "Tu peux, dans le terminal, via",
+        "Note2_2": "commande, obtenir l'adresse IP de cette machine",
+        "Note3": "est un chemin optionnel, son ajout permettra d'obtenir les informations géographiques de l'IP",
+        "getIPv4": "Obtenir l'adresse IPv4 de la machine locale",
+        "getIPv6": "Obtenir l'adresse IPv6 de la machine locale",
+        "get6and4": "Obtenir l'adresse IP de sortie de réseau préférée de la machine locale",
+        "notAvailable": "Cette fonctionnalité n'est pas encore disponible"
+    },
+    "browserinfo": {
+        "Title": "Informations du Navigateur",
+        "Note": "Cette page affiche deux types d'informations sur le navigateur : les informations de base extraites de l'agent utilisateur du navigateur et une empreinte numérique du navigateur calculée à travers diverses métriques de données. Les empreintes numériques du navigateur sont similaires aux empreintes palmaires ; plus votre navigateur expose d'informations, plus votre unicité sur les sites web est élevée, ce qui vous rend plus facilement traçable. Parfois, même en passant en mode privé ou en changeant de navigateur, l'empreinte peut ne pas changer.",
+        "Note2": "Les méthodes de calcul des empreintes numériques des navigateurs sont variées, et différentes approches techniques peuvent conduire à des résultats incohérents. Ici, nous utilisons une méthode relativement simple pour le calcul.",
+        "browser": {
+            "Infos": "Informations du Navigateur",
+            "browserName": "Nom du Navigateur",
+            "browserVersion": "Version",
+            "engineName": "Moteur",
+            "engineVersion": "Version",
+            "osName": "Système d'Exploitation",
+            "osVersion": "Version",
+            "deviceModel": "Modèle",
+            "deviceVendor": "Fabricant",
+            "cpuArchitecture": "Architecture CPU",
+            "gpu": "GPU",
+            "cpuCores": "Cœurs CPU",
+            "language": "Code Langue",
+            "cookieEnabled": "Cookies Activés",
+            "cookieEnabledTrue": "Oui",
+            "cookieEnabledFalse": "Non"
+        },
+        "fingerprint": {
+            "Infos": "Informations sur l'Empreinte",
+            "fingerprint": "Code d'Empreinte",
+            "changeOption": "Vous pouvez essayer de modifier les données utilisées pour calculer l'empreinte du navigateur afin d'observer les variations (n'oubliez pas de vérifier en mode privé).",
+            "browserTips": "Certains navigateurs, comme Safari, protègent les utilisateurs contre le pistage en générant des valeurs d'empreinte différentes à chaque calcul, même lorsque les mêmes données sont sélectionnées."
+        },
+        "options": {
+            "audio": "Audio",
+            "canvas": "Canvas",
+            "fonts": "Polices",
+            "hardware": "Matériel",
+            "locales": "Langues",
+            "permissions": "Permissions",
+            "plugins": "Plugins",
+            "screen": "Écran",
+            "system": "Version du Navigateur",
+            "webgl": "WebGL",
+            "math": "Mathématiques"
+        },
+        "calError": "Échec du calcul des informations du navigateur, veuillez rafraîchir et réessayer.",
+        "calculating": "Calcul en cours..."
     },
     "invisibilitytest": {
         "Title": "Test d'invisibilité",
@@ -140,7 +197,8 @@
         "CensorshipCheck": "Vérifier si un site est bloqué dans certains pays",
         "Whois": "Recherche d'informations sur l'enregistrement de domaine/IP",
         "InvisibilityTest": "Vérifiez si vous utilisez un proxy ou un VPN",
-        "MacChecker": "Requête d'informations d'une adresse physique"
+        "MacChecker": "Requête d'informations d'une adresse physique",
+        "BrowserInfo": "Vérifier les informations du navigateur et l'empreinte digitale"
     },
     "macchecker": {
         "Title": "Recherche MAC",
@@ -198,7 +256,8 @@
         "Note": "Le test de règles est utilisé pour déterminer si les paramètres de règles basées sur le nom de domaine de votre logiciel proxy sont corrects. Avant de procéder au test, veuillez vous référer à la carte ci-dessous et configurer des règles de redirection de domaine différentes pour les 8 URL différentes d'IPCheck.ing dans votre logiciel proxy.",
         "StatusWait": "En attente du test ou erreur de connexion",
         "StatusError": "Erreur de test",
-        "Country": "Région de proxy"
+        "Country": "Région de proxy",
+        "RefreshAll": "Actualiser tout"
     },
     "Tooltips": {
         "RefreshIPCard": "Actualiser la carte IP",
@@ -213,7 +272,8 @@
         "InfoMask": "Masquer les informations IP",
         "QueryIP": "Interroger l'adresse IP",
         "GithubLink": "Voir le code source sur GitHub",
-        "RefreshRuleTests": "Actualiser les tests de règles"
+        "RefreshRuleTests": "Actualiser les tests de règles",
+        "Shell": "Ouvrir le shell"
     },
     "ipInfos": {
         "id": "ipinfos",
@@ -273,7 +333,8 @@
         "StatusUnavailable": "Non disponible",
         "StatusTimeout": "Délai dépassé",
         "checking": "Vérification en cours...",
-        "minTestTime": "Minimal: "
+        "minTestTime": "Minimal: ",
+        "RefreshThisTest": "Rafraîchir ce test"
     },
     "webrtc": {
         "id": "webrtc",
@@ -282,11 +343,11 @@
         "StatusWait": "En attente du test ou erreur de connexion",
         "StatusError": "Erreur de test",
         "NATType": {
-            "srflx": "Possiblement Port Restricted Cone ou Symmetric NAT",
-            "prflx": "Possiblement Port Restricted Cone NAT",
-            "relay": "Possiblement Symmetric NAT",
-            "host": "Possiblement Full Cone NAT",
-            "unknown": "Type de NAT inconnu"
+            "srflx": "Port Restricted Cone ou Symmetric",
+            "prflx": "Port Restricted Cone",
+            "relay": "Symmetric",
+            "host": "Full Cone",
+            "unknown": "Type de inconnu"
         }
     },
     "dnsleaktest": {
@@ -322,7 +383,7 @@
         "Title": "Test de latence mondiale",
         "Note": "Le test de ping est un outil réseau utilisé pour mesurer le temps aller-retour des paquets de données de votre appareil vers des cibles spécifiques (dans ce cas, nos serveurs situés sur différents continents et régions). Il s'agit d'une mesure clé pour évaluer les performances du réseau.",
         "Note2": "Dans ce processus, IPCheck.ing envoie de petits paquets de données depuis des serveurs du monde entier vers votre adresse IP et mesure le temps qu'il faut à ces paquets pour voyager du serveur à votre appareil et vice versa. Grâce à ces tests de ping depuis différentes localisations géographiques, vous pouvez obtenir une vue complète de la vitesse et de la stabilité de la connexion de votre appareil au réseau mondial.",
-        "Note3": "Actuellement, seules les adresses IPv4 sont prises en charge. Veuillez sélectionner votre adresse IP pour le test.",
+        "Note3": "Veuillez sélectionner votre adresse IP pour le test.",
         "SelectIP": "Choisissez un IP",
         "Region": "Région",
         "MinDelay": "Délai minimum (ms)",
@@ -340,7 +401,7 @@
         "Title": "Test MTR",
         "Note": "Le test MTR (My Traceroute) effectue une traçabilité détaillée de votre adresse IP à partir de serveurs situés sur différents continents et régions du monde. Le test MTR combine les fonctionnalités des commandes de traceroute traditionnelles et de ping pour diagnostiquer la qualité et les performances des connexions réseau en temps réel.",
         "Note2": "Ce processus couvre le chemin complet depuis différentes localisations géographiques jusqu'à votre environnement réseau, fournissant des informations sur la latence et la perte de paquets pour chaque saut. Qu'il s'agisse de congestion dans le chemin de routage, de problèmes de latence à un nœud spécifique ou de perte de paquets pendant la transmission, le test MTR fournit des informations de diagnostic essentielles.",
-        "Note3": "Actuellement, seules les adresses IPv4 sont prises en charge. Veuillez sélectionner votre adresse IP pour le test.",
+        "Note3": "Veuillez sélectionner votre adresse IP pour le test.",
         "SelectIP": "Choisissez un IP",
         "Region": "Région",
         "Run": "Démarrez",
@@ -385,7 +446,7 @@
         "DNSResolver": "Ouvrir le Résolution DNS",
         "ToggleMaps": "Activer/désactiver les cartes",
         "IPCheck": "Vérification IP",
-        "ToggleInfoMask": "Activer/désactiver le masquage des informations",
+        "ToggleInfoMask": "Masquer/Démasquer les informations",
         "Help": "Afficher les raccourcis clavier",
         "HelpNote": "Les personnes qui utilisent des raccourcis clavier sont vraiment géniales !",
         "GoNext": "Carte suivante",
@@ -396,13 +457,15 @@
         "About": "Ouvrir À propos",
         "Whois": "Ouvrir la Recherche Whois",
         "InvisibilityTest": "Ouvrir le Test d'invisibilité",
-        "MacChecker": "Ouvrir le Recherche de MAC"
+        "MacChecker": "Ouvrir le Recherche de MAC",
+        "BrowserInfo": "Ouvrir l'Info du navigateur",
+        "fullScreenAdvancedTools": "Outils avancés en plein écran",
+        "Shell": "Ouvrir le Shell"
     },
     "page": {
         "title": "IPCheck.ing - Vérifier mon adresse IP et géolocalisation - Vérifier l'adresse IP de connexion WebRTC - Test de fuite DNS - Test de vitesse - Jason Ng Open Source",
         "description": "Une boîte à outils IP meilleure et open source. Facile à vérifier vos adresses IP, informations IP, vérifier les fuites DNS, examiner les connexions WebRTC, tester la disponibilité des sites web, rechercher des enregistrements DNS, rechercher des informations Whois et tester la latence dans le monde entier.",
         "keywords": "MonIP, Outil IP, Mon IP, Vérification IP, Recherche IP, Test de fuite DNS, Test WebRTC, Test de vitesse, Recherche DNS, Recherche Whois, Test de ping, Test de confidentialité",
-        "footerName": "Créateurs : Jason Ng, Seven Yu & ChatGPT",
         "footerLink": "https://github.com/jason5ng32/MyIP",
         "copyRightName": "Originalement de ",
         "copyRightLink": "https://ipcheck.ing",
@@ -426,6 +489,10 @@
         "blog": "Mon blog",
         "retiremoney": "Planificateur futur",
         "twitter": "Twitter"
+    },
+    "specialthanks": {
+        "Title": "Merci spécial",
+        "Note1": "Ce projet n'aurait pas pu être achevé sans le soutien et l'aide de certaines personnes et organisations enthousiastes, ainsi que de ceux qui ont fourni l'inspiration ou partagé leur code en open-source. Un grand merci à eux :"
     },
     "changelog": {
         "Title": "Modifs",
@@ -784,6 +851,60 @@
                     {
                         "type": "improve",
                         "change": "Optimisation de nombreux détails"
+                    }
+                ]
+            },
+            {
+                "version": "v4.2",
+                "date": "Sept 25, 2024",
+                "content": [
+                    {
+                        "type": "add",
+                        "change": "Ajout de la fonction de requête d'informations du navigateur"
+                    },
+                    {
+                        "type": "add",
+                        "change": "Ajout de la base de données géographique MaxMind"
+                    },
+                    {
+                        "type": "improve",
+                        "change": "Améliorations multiples de l'expérience"
+                    }
+                ]
+            },
+            {
+                "version": "v4.3",
+                "date": "Oct 30, 2024",
+                "content": [
+                    {
+                        "type": "add",
+                        "change": "Ajout de la fonctionnalité API en ligne de commande"
+                    },
+                    {
+                        "type": "improve",
+                        "change": "Le test WebRTC peut maintenant afficher des informations régionales"
+                    },
+                    {
+                        "type": "improve",
+                        "change": "Le test de fuite DNS peut maintenant afficher des informations régionales"
+                    }
+                ]
+            },
+            {
+                "version": "v4.4",
+                "date": "Dec 7, 2024",
+                "content": [
+                    {
+                        "type": "add",
+                        "change": "Préférences de langue"
+                    },
+                    {
+                        "type": "improve",
+                        "change": "Fournisseur de carte changé en Google"
+                    },
+                    {
+                        "type": "improve",
+                        "change": "Autres optimisations générales"
                     }
                 ]
             }

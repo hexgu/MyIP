@@ -15,6 +15,7 @@
   </div>
   <InfoMask :showMaskButton.value="showMaskButton" :infoMaskLevel.value="infoMaskLevel"
     :toggleInfoMask="toggleInfoMask" />
+  <Shell v-if="curlDomainsHadSet" ref="shellRef" />
   <QueryIP ref="queryIPRef" />
   <HelpModal ref="helpModalRef" />
   <Footer ref="footerRef" />
@@ -37,6 +38,7 @@ import Footer from './components/Footer.vue';
 // Widgets
 import Preferences from './components/widgets/Preferences.vue';
 import QueryIP from './components/widgets/QueryIP.vue';
+import Shell from './components/widgets/Shell.vue';
 import HelpModal from './components/widgets/Help.vue';
 import PWA from './components/widgets/PWA.vue';
 import Alert from './components/widgets/Toast.vue';
@@ -62,6 +64,8 @@ const configs = computed(() => store.configs);
 const userPreferences = computed(() => store.userPreferences);
 const shouldRefreshEveryThing = computed(() => store.shouldRefreshEveryThing);
 const Status = computed(() => store.mountingStatus);
+const openedCard = computed(() => store.currentPath.id);
+const curlDomainsHadSet = computed(() => store.curlDomainsHadSet);
 
 // Template 里的 Ref
 const navBarRef = ref(null);
@@ -75,6 +79,7 @@ const IPCheckRef = ref(null);
 const connectivityRef = ref(null);
 const webRTCRef = ref(null);
 const dnsLeaksRef = ref(null);
+const shellRef = ref(null);
 
 
 // Data
@@ -404,13 +409,22 @@ const ShortcutKeys = (isOriginalSite) => {
       description: t('shortcutKeys.DNSResolver'),
     },
     {
-      keys: "b",
+      keys: "C",
       action: () => {
         scrollToElement("AdvancedTools", 80);
         advancedToolsRef.value.navigateAndToggleOffcanvas('/censorshipcheck');
         trackEvent('Nav', 'NavClick', 'CensorshipCheck');
       },
       description: t('shortcutKeys.CensorshipCheck'),
+    },
+    {
+      keys: "b",
+      action: () => {
+        scrollToElement("AdvancedTools", 80);
+        advancedToolsRef.value.navigateAndToggleOffcanvas('/browserinfo');
+        trackEvent('Nav', 'NavClick', 'BrowserInfo');
+      },
+      description: t('shortcutKeys.BrowserInfo'),
     },
     {
       keys: "W",
@@ -422,9 +436,22 @@ const ShortcutKeys = (isOriginalSite) => {
       description: t('shortcutKeys.Whois'),
     },
     {
+      keys: "f",
+      action: () => {
+        if (openedCard !== 0) {
+          advancedToolsRef.value.fullScreen();
+          trackEvent('ShortCut', 'ShortCut', 'FullScreen');
+        }
+        else {
+          return
+        }
+      },
+      description: t('shortcutKeys.fullScreenAdvancedTools'),
+    },
+    {
       keys: "m",
       action: () => {
-        if (configs.value.bingMap) {
+        if (configs.value.map) {
           window.scrollTo({ top: 0, behavior: "smooth" });
           preferencesRef.value.toggleMaps();
         };
@@ -487,8 +514,23 @@ const ShortcutKeys = (isOriginalSite) => {
     },
   ];
 
+  const curlAPI = [
+    {
+      keys: "x",
+      action: () => {
+        shellRef.value.openModal();
+        trackEvent('ShortCut', 'ShortCut', 'Shell');
+      },
+      description: t('shortcutKeys.Shell'),
+    },
+  ]
+
   if (isOriginalSite) {
     shortcutConfig.push(...invisibilitytest);
+  }
+
+  if (curlDomainsHadSet.value) {
+    shortcutConfig.push(...curlAPI);
   }
 
   return shortcutConfig;

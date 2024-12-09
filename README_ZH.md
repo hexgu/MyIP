@@ -1,33 +1,32 @@
 # 🧰 IP 工具箱
 
-<a href="https://trendshift.io/repositories/5332" target="_blank"><img src="https://trendshift.io/api/badge/repositories/5332" alt="jason5ng32%2FMyIP | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a> 
+<div align="center">
 
 ![IPCheck.ing Banner](https://raw.githubusercontent.com/jason5ng32/MyIP/main/public/github/gh_banner.png)
+
+<a href="https://trendshift.io/repositories/5332" target="_blank"><img src="https://trendshift.io/api/badge/repositories/5332" alt="jason5ng32%2FMyIP | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
+
+[![Mentioned in Awesome Self Hosted](https://awesome.re/mentioned-badge.svg)](https://github.com/awesome-selfhosted/awesome-selfhosted)
 
 ![GitHub Repo stars](https://img.shields.io/github/stars/jason5ng32/MyIP)
 ![GitHub forks](https://img.shields.io/github/forks/jason5ng32/myip)
 ![Docker Pulls](https://img.shields.io/docker/pulls/jason5ng32/myip)
-![GitHub license](https://img.shields.io/github/license/jason5ng32/MyIP)
+
+[![Website](https://img.shields.io/website?url=https%3A%2F%2Fipcheck.ing&up_message=online&label=IPCheck.ing 'IPCheck.ing')](https://ipcheck.ing)
+![PWA](https://img.shields.io/badge/PWA-Supported-blue)
 
 ![CodeQL](https://github.com/jason5ng32/MyIP/actions/workflows/github-code-scanning/codeql/badge.svg?branch=main)
 ![Docker Build and Push](https://github.com/jason5ng32/MyIP/actions/workflows/docker-image.yml/badge.svg?branch=main)
-
-![PWA](https://img.shields.io/badge/PWA-Supported-blue)
-![Windows-image](https://img.shields.io/badge/-Windows-blue?logo=windows)
-![MacOS-image](https://img.shields.io/badge/-MacOS-black?logo=apple)
-![Linux-image](https://img.shields.io/badge/-Linux-333?logo=ubuntu)
-
-[![Website](https://img.shields.io/website?url=https%3A%2F%2Fipcheck.ing&up_message=online&label=IPCheck.ing 'IPCheck.ing')](https://ipcheck.ing)
 
 🇺🇸 [English](README.md) | 🇨🇳 [简体中文](README_ZH.md) | 🇫🇷 [Français](README_FR.md)
 
 👉 在这里体验：[https://ipcheck.ing](https://ipcheck.ing)
 
-备注：你可以直接用我已经搭建好的服务，也可以自行搭建。
+你可以直接用我已经搭建好的服务，也可以自行搭建。
 
 [![Deploy with Docker](https://raw.githubusercontent.com/jason5ng32/MyIP/main/public/github/Docker.svg)](https://hub.docker.com/r/jason5ng32/myip)
 
-这是我第一次用 Vue.js 练手的项目。我……只是一个普通的产品经理。
+</div>
 
 ## 👀 主要功能
 
@@ -97,7 +96,7 @@ docker run -d -p 18966:18966 --name myip --restart always jason5ng32/myip:latest
 | `SECURITY_RATE_LIMIT` | 否 | `"0"` | 控制每 60 分钟一个 IP 可以对后端服务器请求的次数（设置为 0 则为不限制） |
 | `SECURITY_DELAY_AFTER` | 否 | `"0"` | 控制每 20 分钟一个 IP 的前 X 次请求不受速度限制，超过 X 次后会逐次增加延迟 |
 | `SECURITY_BLACKLIST_LOG_FILE_PATH` | 否 | `"logs/blacklist-ip.log"` | 路径设置。记录由 SECURITY_RATE_LIMIT 开启后，触发限制的 IP 列表 |
-| `BING_MAP_API_KEY` | 否 | `""` | Bing 地图的 API Key，用于展示 IP 所在地的地图 |
+| `GOOGLE_MAP_API_KEY=` | 否 | `""` | Google 地图的 API Key，用于展示 IP 所在地的地图 |
 | `ALLOWED_DOMAINS` | 否 | `""` | 允许访问的域名，用逗号分隔，用于防止后端 API 被滥用 |
 | `IPCHECKING_API_KEY` | 否 | `""` | IPCheck.ing 的 API Key，用于获取精准的 IP 归属地信息 |
 | `IPINFO_API_TOKEN` | 否 | `""` | IPInfo.io 的 API Token，用于通过 IPInfo.io 获取 IP 归属地信息 |
@@ -105,6 +104,12 @@ docker run -d -p 18966:18966 --name myip --restart always jason5ng32/myip:latest
 | `KEYCDN_USER_AGENT` | 否 | `""` | 使用 KeyCDN 时的域名，需包含 https 前缀。用于通过 KeyCDN 获取 IP 归属地信息 |
 | `CLOUDFLARE_API` | 否 | `""` | Cloudflare 的 API Key，用于通过 Cloudflare 获取 AS 系统的信息 |
 | `MAC_LOOKUP_API_KEY` | 否 | `""` | MAC 查询的 API Key，用于通过 MAC Lookup 获取 MAC 地址的归属信息 |
+| `VITE_GOOGLE_ANALYTICS_ID` | **是** | `""` | Google Analytics 的 ID，用于统计访问量 |
+| `VITE_CURL_IPV4_DOMAIN` | 否 | `""` | 为用户提供 CURL API 的 IPv4 域名 |
+| `VITE_CURL_IPV6_DOMAIN` | 否 | `""` | 为用户提供 CURL API 的 IPv6 域名 |
+| `VITE_CURL_IPV64_DOMAIN` | 否 | `""` | 为用户提供 CURL API 的双网络栈域名 |
+
+需要注意的是，如果 CURL 系列的环境变量任意一个缺失，都不会启用 CURL API。
 
 ### 在 Node 环境里使用环境变量
 
@@ -119,7 +124,7 @@ cp .env.example .env
 ```bash
 BACKEND_PORT=11966
 FRONTEND_PORT=18966
-BING_MAP_API_KEY="YOUR_KEY_HERE"
+GOOGLE_MAP_API_KEY="YOUR_KEY_HERE"
 ALLOWED_DOMAINS="example.com"
 IPCHECKING_API="YOUR_KEY_HERE"
 ```
@@ -132,7 +137,7 @@ IPCHECKING_API="YOUR_KEY_HERE"
 
 ```bash
 docker run -d -p 18966:18966 \
-  -e BING_MAP_API_KEY="YOUR_KEY_HERE" \
+  -e GOOGLE_MAP_API_KEY="YOUR_KEY_HERE" \
   -e ALLOWED_DOMAINS="example.com" \
   -e IPCHECKING_API="YOUR_TOKEN_HERE" \
   --name myip \
@@ -146,9 +151,10 @@ docker run -d -p 18966:18966 \
 
 ```ini
 # IP Testing
-IP-CIDR,1.0.0.1/32,DIRECT,no-resolve
-IP-CIDR6,2606:4700:4700::1111/128,DIRECT,no-resolve
-DOMAIN-SUFFIX,ipify.org,Proxy
+IP-CIDR,1.0.0.1/32,Proxy,no-resolve
+IP-CIDR6,2606:4700:4700::1111/128,Proxy,no-resolve
+DOMAIN,4.ipcheck.ing,DIRECT
+DOMAIN,6.ipcheck.ing,DIRECT
 # Rule Testing
 DOMAIN,ptest-1.ipcheck.ing,Proxy1
 DOMAIN,ptest-2.ipcheck.ing,Proxy2

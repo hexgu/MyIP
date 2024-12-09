@@ -1,10 +1,6 @@
 <template>
     <!-- Censorship Check -->
-    <div class="mtr-test-section mb-4">
-        <div class="jn-title2">
-            <h2 id="CensorshipCheck" :class="{ 'mobile-h2': isMobile }">🚧 {{ t('censorshipcheck.Title') }}</h2>
-
-        </div>
+    <div class="mtr-test-section my-4">
         <div class="text-secondary">
             <p>{{ t('censorshipcheck.Note') }}</p>
         </div>
@@ -265,7 +261,8 @@ const startHttpCheck = () => {
             return await response.json();
         } catch (error) {
             console.error("Error sending HTTP request:", error);
-            errorMsg.value = t('censorshipcheck.fetchError');
+            censorshipCheckStatus.value = "error";
+            errorMsg.value = t('censorshipcheck.invalidURL');
         }
     };
 
@@ -295,6 +292,8 @@ const startHttpCheck = () => {
             }
         } catch (error) {
             console.error("Error fetching HTTP results:", error);
+            censorshipCheckStatus.value = "error";
+            errorMsg.value = t('censorshipcheck.fetchError');
         }
     };
 
